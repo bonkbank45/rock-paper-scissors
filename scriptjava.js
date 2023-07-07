@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
         result = `You Win! ${playerSelectionChoice} beats ${computerSelection}`;
     }
     else if (playerSelectionChoice === computerSelection) {
-        result = `Withdrawn ${playerSelectionChoice} equals ${computerSelection} !`;
+        result = `Withdrawn, ${playerSelectionChoice} equals ${computerSelection} !`;
     }
     else {
         result = `You Lose ${computerSelection} beats ${playerSelectionChoice}`;
