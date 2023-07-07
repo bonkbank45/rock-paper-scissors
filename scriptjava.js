@@ -39,9 +39,9 @@ function game() {
     let computerScore = 0;
 
     for (let i = 0; i < 5; i++ ) {
-        let playerChoice = prompt("Rock Paper Scissor!")
-        let computerSelection = getComputerChoice();
-        let result = playRound(playerChoice, computerSelection);
+        const playerChoice = prompt("Rock Paper Scissor!")
+        const computerSelection = getComputerChoice();
+        const result = playRound(playerChoice, computerSelection);
         if (result.match(/You Win!.+/g)) {
             console.log(result);
             playerScore++
