@@ -38,32 +38,40 @@ function playRound(event) {
     game(result);
 }
 
+const WINNER = 5;
 let playerScore = 0;
 let computerScore = 0;
 
 function game(playRound) {
-    const WINNER = 5;
     const log = document.querySelector(".log")
     const para = document.createElement("p");
+    const score = document.querySelector(".score-currently")
 
     if (playRound.match(/You Win!/)) {
-       ++playerScore;
-    } else {
-        console.log("Loss")
-    }
-    /*
-    if (playerScore > computerScore) {
-        return `You Win! with score ${playerScore}-${computerScore}`;
-    }
-    else if (computerScore > playerScore) {
-        return `You Lose with score ${playerScore}-${computerScore}`;
-    }
+        score.textContent = `${++playerScore} - ${computerScore}`;
+    } 
     else {
-        return `Withdrawn with score ${playerScore}-${computerScore}`
+        score.textContent = `${playerScore} - ${++computerScore}`;
     }
-    */
+
     para.innerHTML = playRound;
     log.appendChild(para);
+    checkWinner();
+}
+
+function checkWinner() {
+    const result = document.createElement("div");
+    const endState = document.querySelector(".end-state");
+    if (playerScore === WINNER) {
+        result.innerText = `Player Win!, Score ${playerScore} - ${computerScore}`;
+    }
+    else if (computerScore === WINNER) {
+        result.innerText = `You Lose, Score ${playerScore} - ${computerScore}`;
+    }
+    else {
+        return;
+    }
+    endState.appendChild(result);
 }
 
 const buttons = document.querySelectorAll("button");
