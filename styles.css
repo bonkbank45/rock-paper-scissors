@@ -3,6 +3,10 @@ body {
     font-size: 1.5rem;
 }
 
+h1 {
+    display: inline-block;
+}
+
 button {
     font-size: 1.5rem;
     color: white;
@@ -13,6 +17,10 @@ button {
     cursor: pointer;
 }
 
+.score {
+    display: flex;
+    justify-content: space-around;
+}
 
 .container {
     display: flex;

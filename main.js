@@ -38,14 +38,16 @@ function playRound(event) {
     game(result);
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 function game(playRound) {
-    let playerScore = 0;
-    let computerScore = 0;
+    const WINNER = 5;
     const log = document.querySelector(".log")
     const para = document.createElement("p");
 
     if (playRound.match(/You Win!/)) {
-        console.log("Win");
+       ++playerScore;
     } else {
         console.log("Loss")
     }
