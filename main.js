@@ -71,15 +71,21 @@ function checkWinner() {
     else {
         return;
     }
+    result.classList.add("final-score");
     finalScore.appendChild(result);
     endState();
 }
 
 function endState() {
-    let buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll("button");
+    const finalScore = document.querySelector(".final-score");
     buttons.forEach((button) => {
         button.remove();
-    });      
+    });
+    
+    const playAgainButton = document.createElement("button");
+    playAgainButton.innerText = `Play again?`
+    finalScore.appendChild(playAgainButton);
 }
 
 const buttons = document.querySelectorAll("button");

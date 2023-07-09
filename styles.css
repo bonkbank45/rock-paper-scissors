@@ -3,10 +3,6 @@ body {
     font-size: 1.5rem;
 }
 
-h1 {
-    display: inline-block;
-}
-
 button {
     font-size: 1.5rem;
     color: white;
@@ -19,7 +15,19 @@ button {
 
 .score {
     display: flex;
-    justify-content: space-around;
+}
+
+
+.player-score,
+.score-currently,
+.computer-score {
+    text-align: center;
+    flex:1;
+    justify-content: center;
+}
+
+.score-currently {
+    flex: 1 0 150px;
 }
 
 .final-score {
@@ -27,7 +35,13 @@ button {
     margin-bottom: 10px;
 }
 
-.container {
+.container-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-button {
     display: flex;
     justify-content: center;
     gap: 3rem;
