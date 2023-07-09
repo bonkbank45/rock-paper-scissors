@@ -107,7 +107,7 @@ function reset() {
  
     finalScoreContainer.removeChild(finalScoreContainer.firstChild);
 
-    score[0].innerText = "##";
+    score[0].innerText = "0 - 0";
     playerScore = 0;
     computerScore = 0;
 
