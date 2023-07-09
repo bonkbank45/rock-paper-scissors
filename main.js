@@ -1,3 +1,8 @@
+/*
+    Do not scout my code, It's real shitty LOL!
+    This is my first time coding a JavaScript project.
+*/
+
 function getComputerChoice() {
     const choiceComputer = Math.floor(Math.random() * 3) + 1;
     let result;
@@ -42,54 +47,84 @@ const WINNER_SCORE = 5;
 let playerScore = 0;
 let computerScore = 0;
 
+const log = document.querySelector(".log");
+const score = document.querySelector(".score-currently");
+
 function game(playRound) {
-    const log = document.querySelector(".log")
+    
     const para = document.createElement("p");
-    const score = document.querySelector(".score-currently")
 
     if (playRound.match(/You Win!/)) {
-        score.textContent = `${++playerScore} - ${computerScore}`;
+        score.innerHTML = `${++playerScore} - ${computerScore}`;
     } 
     else if (playRound.match(/You Lose/)){
-        score.textContent = `${playerScore} - ${++computerScore}`;
+        score.innerHTML = `${playerScore} - ${++computerScore}`;
     } 
 
-    para.innerHTML = playRound;
+    para.innerText = playRound;
+    para.classList.add("log-list");
     log.appendChild(para);
+
     checkWinner();
 }
 
+const finalScoreContainer = document.querySelector(".final-score");
+
 function checkWinner() {
-    const result = document.createElement("div");
-    const finalScore = document.querySelector(".final-score");
+    const finalScore = document.createElement("div");
+    
     if (playerScore === WINNER_SCORE) {
-        result.innerText = `Player Win!, Score ${playerScore} - ${computerScore}`;
+        finalScore.innerText = `Player Win!, Score ${playerScore} - ${computerScore}`;
     }
     else if (computerScore === WINNER_SCORE) {
-        result.innerText = `You Lose, Score ${playerScore} - ${computerScore}`;
+        finalScore.innerText = `You Lose, Score ${playerScore} - ${computerScore}`;
     }
     else {
         return;
     }
-    result.classList.add("final-score");
-    finalScore.appendChild(result);
+    finalScore.classList.add("final-score");
+    finalScoreContainer.appendChild(finalScore);
+
     endState();
 }
 
 function endState() {
-    const buttons = document.querySelectorAll("button");
-    const finalScore = document.querySelector(".final-score");
-    buttons.forEach((button) => {
-        button.remove();
-    });
-    
-    const playAgainButton = document.createElement("button");
-    playAgainButton.innerText = `Play again?`
-    finalScore.appendChild(playAgainButton);
+    for (const button of buttons) {
+        button.style.display = "none";
+    }
+    playAgainButton.style.display = "block";
 }
 
-const buttons = document.querySelectorAll("button");
-console.log(buttons);
-buttons.forEach( (button) => {
-    button.addEventListener("click", playRound)
-})
+const loglist = document.getElementsByClassName("log-list");
+
+function reset() {
+    const score = document.getElementsByClassName("score-currently");
+    playAgainButton.style.display = "none";
+
+    for (const button of buttons) {
+        button.style.display = "inline";
+    }
+ 
+    finalScoreContainer.removeChild(finalScoreContainer.firstChild);
+
+    score[0].innerText = "##";
+    playerScore = 0;
+    computerScore = 0;
+
+    // clear logs
+    while (loglist.length > 0) {
+        loglist[0].parentNode.removeChild(loglist[0]);
+    };
+
+}
+
+const playAgainButton = document.getElementById("play-again");
+const buttons = document.getElementsByClassName("key");
+
+playAgainButton.addEventListener("click", reset);
+
+for (const button of buttons) {
+    button.addEventListener("click", playRound);
+}
+
+

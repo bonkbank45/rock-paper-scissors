@@ -55,3 +55,7 @@ button {
     text-align: center;
 }
 
+#play-again {
+    display: none;
+}
+
