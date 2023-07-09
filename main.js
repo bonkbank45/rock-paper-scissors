@@ -38,7 +38,7 @@ function playRound(event) {
     game(result);
 }
 
-const WINNER = 5;
+const WINNER_SCORE = 5;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -50,9 +50,9 @@ function game(playRound) {
     if (playRound.match(/You Win!/)) {
         score.textContent = `${++playerScore} - ${computerScore}`;
     } 
-    else {
+    else if (playRound.match(/You Lose/)){
         score.textContent = `${playerScore} - ${++computerScore}`;
-    }
+    } 
 
     para.innerHTML = playRound;
     log.appendChild(para);
@@ -61,17 +61,25 @@ function game(playRound) {
 
 function checkWinner() {
     const result = document.createElement("div");
-    const endState = document.querySelector(".end-state");
-    if (playerScore === WINNER) {
+    const finalScore = document.querySelector(".final-score");
+    if (playerScore === WINNER_SCORE) {
         result.innerText = `Player Win!, Score ${playerScore} - ${computerScore}`;
     }
-    else if (computerScore === WINNER) {
+    else if (computerScore === WINNER_SCORE) {
         result.innerText = `You Lose, Score ${playerScore} - ${computerScore}`;
     }
     else {
         return;
     }
-    endState.appendChild(result);
+    finalScore.appendChild(result);
+    endState();
+}
+
+function endState() {
+    let buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.remove();
+    });      
 }
 
 const buttons = document.querySelectorAll("button");
