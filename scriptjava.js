@@ -37,6 +37,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
+    /*
 
     for (let i = 0; i < 5; i++ ) {
         const playerChoice = prompt("Rock Paper Scissor!")
@@ -52,6 +53,7 @@ function game() {
             console.log(result);
         }
     }
+    */
 
     if (playerScore > computerScore) {
         return `You Win! with score ${playerScore}-${computerScore}`;
